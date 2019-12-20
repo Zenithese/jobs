@@ -12,10 +12,10 @@ function Modal({ modal, closeModal }) {
     let component;
     switch (modal) {
         case 'login':
-            component = <AuthRoute exact path="/login" component={LoginFormContainer} />
+            component = <AuthRoute exact path="/" component={LoginFormContainer} />
             break;
         case 'signup':
-            component = <AuthRoute exact path="/signupd" component={SignupFormContainer} />
+            component = <AuthRoute exact path="/" component={SignupFormContainer} />
             break;
         default:
             return null;
