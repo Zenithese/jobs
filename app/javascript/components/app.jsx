@@ -17,7 +17,7 @@ import SavedJobs from './saved_jobs/saved_jabs';
 import JobPage from './job_page/job_page';
 import Splash from './splash/splash';
 import Modal from '../components/session_form/modal'
-import chat_widget from './chat/chat_widget';
+// import chat_widget from './chat/chat_widget';
 
 const App = () => {
     return (
