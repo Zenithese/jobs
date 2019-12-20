@@ -39,7 +39,6 @@
 require 'open-uri'
 
 Job.destroy_all
-SavedJob.destroy_all
 
 job1 = Job.create!(
     title: "Developer", 
@@ -136,6 +135,3 @@ job3 = Job.create!(
         "Ability to follow directions",
         "Available for closing/evening shifts at Espresso Vino; open and close shifts at other locations."
     ])
-
-
-SavedJob.create!(user_id: 6, job_id: job1.id)
