@@ -17,6 +17,7 @@ import SavedJobs from './saved_jobs/saved_jabs';
 import JobPage from './job_page/job_page';
 import Splash from './splash/splash';
 import Modal from '../components/session_form/modal'
+import chat_widget from './chat/chat_widget';
 
 const App = () => {
     return (
@@ -27,7 +28,8 @@ const App = () => {
             <ProtectedRoute exact path="/yourjobs" component={SavedJobs} />
             <ProtectedRoute exact path="/jobs/:jobId" component={JobPage} />
             <ProtectedRoute path="/jobs" component={JobsBoard} />
-            <ProtectedRoute path="/" component={Splash} />
+            {/* <ProtectedRoute path="/" component={Splash} /> */}
+            <ProtectedRoute path="/" component={chat_widget} />
         </Switch>
     </div>
 )};
