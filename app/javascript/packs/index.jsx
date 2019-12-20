@@ -13,6 +13,10 @@ import Root from '../components/root';
 // )
 
 document.addEventListener('DOMContentLoaded', () => {
+  // var elems = document.querySelectorAll('.fixed-action-btn');
+  // var instances = M.FloatingActionButton.init(elems, {
+  //   direction: 'left'
+  // });
   let store;
   if (window.currentUser) {
     const preloadedState = {

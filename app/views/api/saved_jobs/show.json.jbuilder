@@ -1,0 +1,1 @@
+json.extract! @savedjob, :id, :user_id, :job_id

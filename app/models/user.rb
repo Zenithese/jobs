@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :savedjobs
+
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
         return nil unless user
@@ -20,7 +22,7 @@ class User < ApplicationRecord
     end
 
     def is_password?(password)
-        debugger
+        
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
 

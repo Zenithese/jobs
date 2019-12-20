@@ -9,22 +9,27 @@ import {
 } from 'react-router-dom';
 
 import GreetingContainer from "./greeting/greeting_container";
-import SignUpFormContainer from './session_form/signup_form_container';
-import LogInFormContainer from './session_form/login_form_container';
-import { AuthRoute, ProtectedRoute } from '../utils/route_util';
-import SessionForm from '../components/session_form/session_form'
+import { ProtectedRoute } from '../utils/route_util';
+import SessionForm from '../components/session_form/session_form';
 
-const App = () => (
+import JobsBoard from '../components/jobs_board/jobs_board'
+import SavedJobs from './saved_jobs/saved_jabs';
+import JobPage from './job_page/job_page';
+import Splash from './splash/splash';
+import Modal from '../components/session_form/modal'
+
+const App = () => {
+    return (
     <div>
-        <header>
-            <h1>Solidarity Forever</h1>
-            <GreetingContainer />
-        </header>
+        <GreetingContainer />
+        <Modal/>
         <Switch>
-            <AuthRoute exact path="/login" component={LogInFormContainer} />
-            <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+            <ProtectedRoute exact path="/yourjobs" component={SavedJobs} />
+            <ProtectedRoute exact path="/jobs/:jobId" component={JobPage} />
+            <ProtectedRoute path="/jobs" component={JobsBoard} />
+            <ProtectedRoute path="/" component={Splash} />
         </Switch>
     </div>
-);
+)};
 
 export default App;
