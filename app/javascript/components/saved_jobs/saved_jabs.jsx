@@ -37,7 +37,7 @@ function SavedJobs(props) {
                     <li className="col s3" key={`job-${i}`}>
                         <div className="card hovorable">
                             <div className="card-image">
-                                <img className="" src={require("/Users/justin/Desktop/projects/jobs/jobs/app/assets/images/comp_vii.jpg")} />
+                                <img className="" src={'https://seedie.s3.amazonaws.com/comp_vii.jpg'} />
                                 <button className="btn-floating halfway-fab waves-effect waves-light red" onClick={() => removeJob(job.id)}><i className="material-icons">remove</i></button>
                             </div>
                             <div className="card-content">

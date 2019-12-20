@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Widget, addResponseMessage, handleNewUserMessage } from 'react-chat-widget';
-import logo from '../../../assets/images/Karl_Marx.jpg';
 import Cable from 'actioncable';
 // import LoginModal from '../common/LoginModal';
 // import './css/chat.css';
@@ -49,8 +48,8 @@ class ChatWidget extends Component {
 
     //Prepare the Action Cable socket for chat function
     createSocket() {
-        let cable = Cable.createConsumer('http://localhost:3000/'+ 'cable');
-        // let cable = Cable.createConsumer('host url' + 'cable');
+        // let cable = Cable.createConsumer('http://localhost:3000/'+ 'cable');
+        let cable = Cable.createConsumer('https://unionjobs.herokuapp.com/' + 'cable');
         let userId = this.props.user.id;
 
         //Create chat function
@@ -71,7 +70,7 @@ class ChatWidget extends Component {
     }
 
     render() {
-        return (<Widget handleNewUserMessage={this.handleNewUserMessage} profileAvatar={logo} title="Let's talk about organizing" subtitle="Chat Conversation" />)
+        return (<Widget handleNewUserMessage={this.handleNewUserMessage} profileAvatar={'https://seedie.s3.amazonaws.com/Karl_Marx.jpg'} title="Let's talk about organizing" subtitle="Chat Conversation" />)
     }
 }
 
