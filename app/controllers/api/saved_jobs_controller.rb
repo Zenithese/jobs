@@ -7,7 +7,6 @@ class Api::SavedJobsController < ApplicationController
     end
 
     def create
-        
         @savedjob = SavedJob.new(job_id: params[:job][:id], user_id: current_user.id)
         @savedjob.save
         render "api/saved_jobs/show"

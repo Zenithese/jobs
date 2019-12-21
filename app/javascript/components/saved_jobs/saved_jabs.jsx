@@ -5,9 +5,21 @@ import { fetchSavedJobs, deleteSavedJob } from '../../actions/saved_job_actions'
 import { fetchJobs } from '../../actions/job_actions'
 
 const mapStateToProps = (state) => {
-    let currentUser = state.entities.users[state.session.id]
-    let savedJobs = Object.values(state.entities.savedJobs).filter(job => job.user_id === currentUser.id).map(job => job.job_id)
-    let jobs = Object.values(state.entities.jobs).filter(job => savedJobs.includes(job.id))
+    let currentUser = state.entities.users[state.session.id];
+    let num = 0;
+    let order = {};
+    Object.values(state.entities.savedJobs).forEach(job => {
+        if (job.user_id === currentUser.id) {
+            order[job.job_id] = num;
+            num += 1;
+        };
+    });
+    let jobs = new Array;
+    Object.values(state.entities.jobs).forEach(job => {
+        if (order[job.id] !== undefined) {
+            jobs[order[job.id]] = job;
+        };
+    });
     return {
         currentUser,
         jobs,
