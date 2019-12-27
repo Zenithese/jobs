@@ -32,7 +32,6 @@ class SessionForm extends React.Component {
   }
 
   onChange(value) {
-    debugger
     console.log("Captcha value:", value);
   }
 
