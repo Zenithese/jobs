@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { ReCaptcha } from 'react-recaptcha-v3';
+import ReCAPTCHA from "react-google-recaptcha";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -54,9 +55,9 @@ class SessionForm extends React.Component {
           <label>Password:</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
-        <ReCaptcha
-          sitekey="6Lc31ckUAAAAAIPoaFyy5lrj9wCB6onKMP-kGIsf"
-          action='homepage'
+        <ReCAPTCHA
+          sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
+          // action='homepage'
           onChange={this.onChange}
         />
         <input className="btn waves-effect waves-light" type="submit" value={this.props.formType} />
