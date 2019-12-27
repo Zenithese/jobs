@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ReCAPTCHA from "react-google-recaptcha";
+import { ReCaptcha } from 'react-recaptcha-v3';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -30,9 +30,10 @@ class SessionForm extends React.Component {
     }
   }
 
-onChange(value) {
-  console.log("Captcha value:", value);
-}
+  onChange(value) {
+    debugger
+    console.log("Captcha value:", value);
+  }
 
   render() {
     let errors = this.props.errors.map((err) => {
@@ -53,8 +54,9 @@ onChange(value) {
           <label>Password:</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
-        <ReCAPTCHA
+        <ReCaptcha
           sitekey="6Lc31ckUAAAAAIPoaFyy5lrj9wCB6onKMP-kGIsf"
+          action='homepage'
           onChange={this.onChange}
         />
         <input className="btn waves-effect waves-light" type="submit" value={this.props.formType} />

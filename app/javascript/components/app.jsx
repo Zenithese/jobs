@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import {
     Route,
@@ -12,14 +12,20 @@ import GreetingContainer from "./greeting/greeting_container";
 import { ProtectedRoute } from '../utils/route_util';
 import SessionForm from '../components/session_form/session_form';
 
-import JobsBoard from '../components/jobs_board/jobs_board'
+import JobsBoard from '../components/jobs_board/jobs_board';
 import SavedJobs from './saved_jobs/saved_jabs';
 import JobPage from './job_page/job_page';
 import Splash from './splash/splash';
-import Modal from '../components/session_form/modal'
+import Modal from '../components/session_form/modal';
 // import chat_widget from './chat/chat_widget';
+import { loadReCaptcha } from 'react-recaptcha-v3';
 
 const App = () => {
+
+    useEffect(() => {
+        loadReCaptcha('6Lc31ckUAAAAAIPoaFyy5lrj9wCB6onKMP-kGIsf');
+    }, []);
+
     return (
     <div>
         <GreetingContainer />
