@@ -13,3 +13,60 @@
  *= require_tree .
  *= require_self
  */
+
+svg {
+  /* position: absolute;
+  left: 0; */
+  width: 200px;
+  height: 216px;
+  fill: purple;
+}
+svg:hover {
+  fill: red;
+}
+
+svg:hover + .portal > .entangle {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.forground {
+    position: fixed;
+    width: 100px;
+}
+
+/* .forground:hover {
+    z-index: 2147483647;
+} */
+
+.the_trick {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    left: 40px;
+    z-index: 2147483647;
+}
+
+.the_trick:hover + .forground {
+    z-index: 2147483646;
+    transform: translateY(-10%);
+}
+
+.the_trick:hover + .forground > svg {
+    fill: red;
+    transform: scale(1.1);
+}
+
+.the_trick:hover + .forground > svg + .portal > .entangle{
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.1) translateY(-5%);
+}
+
+.collective {
+    height: 216px;
+    list-style: none;
+    bottom: -60px;
+    position: absolute;
+    width: 100%;
+}

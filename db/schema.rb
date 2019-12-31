@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_202334) do
+ActiveRecord::Schema.define(version: 2019_12_29_002159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2019_12_17_202334) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "unions", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "tags", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tags"], name: "index_unions_on_tags", using: :gin
   end
 
   create_table "users", force: :cascade do |t|

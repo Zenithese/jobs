@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const FAB = ({ logout }) => {
     return (
-        <div className="fab-container undefined">
+        <div style={{ zIndex: '2147483647' }}className="fab-container undefined">
             <Link tooltip="Logout">
                     <i className="material-icons" style={{ cursor: "pointer" }} onClick={logout}>lock_outline</i>
             </Link>
