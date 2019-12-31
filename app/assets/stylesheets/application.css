@@ -40,10 +40,10 @@ svg:hover + .portal > .entangle {
 } */
 
 .the_trick {
-    position: absolute;
+    position: fixed;
     width: 100px;
     height: 200px;
-    left: 40px;
+    margin-left: 40px;
     z-index: 2147483647;
 }
 
