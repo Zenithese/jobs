@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import JobsBoard from '../jobs_board/jobs_board'
 import Navbar from '../navbar/navbar';
+import Search from '../search/search';
 import FAB from '../FAB/fab';
 var $ = require('jquery');
 
@@ -22,6 +23,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     const personalGreeting = () => (
         <hgroup className="">
             <Navbar user={currentUser.username}/>
+            {/* <Search /> */}
             <FAB logout={logout}/>
         </hgroup>
     );

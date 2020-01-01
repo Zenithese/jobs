@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_002159) do
+ActiveRecord::Schema.define(version: 2020_01_01_030321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "title", null: false
@@ -23,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_002159) do
     t.string "qualifications", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
     t.index ["duties"], name: "index_jobs_on_duties", using: :gin
     t.index ["qualifications"], name: "index_jobs_on_qualifications", using: :gin
     t.index ["tags"], name: "index_jobs_on_tags", using: :gin
@@ -31,6 +45,20 @@ ActiveRecord::Schema.define(version: 2019_12_29_002159) do
   create_table "saved_jobs", force: :cascade do |t|
     t.integer "job_id", null: false
     t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "tag_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
