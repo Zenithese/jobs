@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { openModal } from '../../actions/modal_actions'
 import { fetchJobs, fetchJob } from '../../actions/job_actions'
 import { saveJob } from '../../actions/saved_job_actions'
 
@@ -18,6 +19,7 @@ const mapDispatchToProps = dispatch => {
         fetchJobs: () => dispatch(fetchJobs()),
         fetchJob: (job) => dispatch(fetchJob(job)),
         saveJob: (job) => dispatch(saveJob(job)),
+        openModal: (modal) => dispatch(openModal(modal)),
     };
 };
 
@@ -65,7 +67,6 @@ class JobPage extends React.Component {
     }
 
     render() {
-        console.log(this.props.job)
         if (this.props.job) {
             return (
                 <div className="container">
@@ -91,6 +92,11 @@ class JobPage extends React.Component {
                         <h5>Qualifications</h5>
                         {/* <blockquote>{this.renderQualifications()}</blockquote> */}
                         {this.renderQualifications()}
+                    </div>
+                    <div className="divider"></div>
+                    <div className="section">
+                        <h5>Contact</h5>
+                        <a className="blue-text" style={{ cursor: 'pointer' }} onClick={() => this.props.openModal('contact')}>Contact</a>
                     </div>
                 </div>
             )

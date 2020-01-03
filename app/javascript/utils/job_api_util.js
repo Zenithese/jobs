@@ -1,9 +1,10 @@
 var $ = require('jquery');
 
-export const fetchJobs = () => {
+export const fetchJobs = data => {
     return $.ajax({
         method: 'GET',
         url: '/api/jobs',
+        data: { data }
     })
 };
 

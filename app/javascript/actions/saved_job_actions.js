@@ -38,7 +38,6 @@ export const fetchSavedJobs = () => dispatch => (
 );
 
 export const saveJob = (job) => dispatch => {
-    
     return APIUtil.saveJob(job).then(job => (
         dispatch(receiveSavedJob(job))
     ))

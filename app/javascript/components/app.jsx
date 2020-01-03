@@ -18,8 +18,10 @@ import JobPage from './job_page/job_page';
 import Splash from './splash/splash';
 import Search from './search/search'
 import Modal from '../components/session_form/modal';
+import ContactModal from './job_page/contact_modal';
 // import chat_widget from './chat/chat_widget';
-import { loadReCaptcha } from 'react-recaptcha-v3';
+// import { loadReCaptcha } from 'react-recaptcha-v3';
+import { loadReCaptcha } from 'react-recaptcha-google';
 
 const App = () => {
 
@@ -30,7 +32,8 @@ const App = () => {
     return (
     <div>
         <GreetingContainer />
-        <Modal/>
+        <Modal />
+        <ContactModal />
         <Switch>
             <ProtectedRoute exact path="/yourjobs" component={SavedJobs} />
             <ProtectedRoute exact path="/jobs/:jobId" component={JobPage} />

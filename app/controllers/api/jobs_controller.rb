@@ -1,6 +1,10 @@
 class Api::JobsController < ApplicationController
     def index
-        @jobs = Job.all
+        if params[:data]
+            @jobs = Job.tagged(params[:data])
+        else
+            @jobs = Job.all
+        end
         render "api/jobs/index"
     end
 

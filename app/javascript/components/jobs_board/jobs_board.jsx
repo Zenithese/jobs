@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { fetchJobs } from '../../actions/job_actions'
 import { saveJob } from '../../actions/saved_job_actions'

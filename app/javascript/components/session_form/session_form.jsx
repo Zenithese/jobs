@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { ReCaptcha } from 'react-recaptcha-v3';
-import ReCAPTCHA from "react-google-recaptcha";
+// import { ReCaptcha } from 'react-recaptcha-v3';
+// import ReCAPTCHA from "react-google-recaptcha";
+import { ReCaptcha } from 'react-recaptcha-google';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -9,9 +10,12 @@ class SessionForm extends React.Component {
     this.state = {
       username: "",
       password: "",
+      isVerified: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
   }
 
   handleClose(e) {
@@ -20,9 +24,13 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (this.state.isVerified) {
+      e.preventDefault();
+      const user = Object.assign({}, this.state);
+      this.props.processForm(user);
+    } else {
+      alert('Silly bot, unions are for humans');
+    }
   }
 
   update(field) {
@@ -31,8 +39,31 @@ class SessionForm extends React.Component {
     }
   }
 
-  onChange(value) {
-    console.log("Captcha value:", value);
+  componentDidMount() {
+    if (this.captcha) {
+        console.log("started, just a second...")
+        this.captcha.reset();
+        //invisible:
+        // this.captcha.execute();
+    }
+  }
+
+  onLoadRecaptcha() {
+      if (this.captcha) {
+          this.captcha.reset();
+          //invisible:
+          // this.captcha.execute();
+      }
+  }
+
+  verifyCallback(recaptchaToken) {
+    if (recaptchaToken) {
+      this.setState({
+        isVerified: true
+      })
+      console.log(this.state.isVerified)
+      // console.log(recaptchaToken, "<= your recaptcha token")
+    } 
   }
 
   render() {
@@ -54,10 +85,23 @@ class SessionForm extends React.Component {
           <label>Password:</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
-        <ReCAPTCHA
-          sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
+        <ReCaptcha
+          ref={(el) => {this.captcha = el;}}
           // action='homepage'
-          onChange={this.onChange}
+          // onChange={this.onChange}
+
+          //checkbox:
+          sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
+          size="normal"
+          data-theme="dark"
+
+          //invisible:
+          // sitekey="6Lepv8sUAAAAACVOwNxHDThDdBQhtnNsP6qMTPaw"
+          // size="invisible" 
+
+          render="explicit"
+          onloadCallback={this.onLoadRecaptcha}
+          verifyCallback={this.verifyCallback}
         />
         <input className="btn waves-effect waves-light" type="submit" value={this.props.formType} />
         <br/>

@@ -6,66 +6,52 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# id: 1,
-#  title: "Developer",
-#  description: "Design and code web applications with social and economic justice as core principles.",
-#  tags:
-#   ["React",
-#    "React Native",
-#    "PostgreSQL",
-#    "Rails",
-#    "Union",
-#    "Web Developement",
-#    "Programmer",
-#    "Coding",
-#    "Social",
-#    "Economic",
-#    "Justice",
-#    "Solidarity"],
-#  duties:
-#   ["Full stack web development",
-#    "Maintain and monitor database",
-#    "Update legacy systems",
-#    "Maintian Labor Movement awareness",
-#    "Create, test and deploy mobile apps",
-#    "Assist clients with their user experience and technical understanding",
-#    "Report to CTO and CEO on a regular basis"],
-#  qualifications:
-#   ["Proficient in React, React Native, Ruby on Rails, Redux, JQuery, CSS, HTML, Python",
-#    "Willingness to learn new and expand upon known programming languages, librarys, and paradigms",
-#    "Commitment to social and economic justice",
-#    "Ability to perform within a dynamic and evolving workspace"],
-
 require 'open-uri'
 
 Job.destroy_all
 
+# (1..10).each do |i|
+#   country = Country.create(name: Faker::Address.country)
+#   (1..10).each do |j|
+#     state = State.create(name: Faker::Address.state, country: country)
+#     (1..10).each do |k|
+#       city = City.create(name: Faker::Address.city, state: state)
+#     end
+#   end
+# end
+
 job1 = Job.create!(
     title: "Developer", 
     description: "Design and code web applications with social and economic justice as core principles.",  
-    tags: ["React",
-   "React Native",
-   "PostgreSQL",
-   "Rails",
-   "Union",
-   "Web Developement",
-   "Programmer",
-   "Coding",
-   "Social",
-   "Economic",
-   "Justice",
-   "Solidarity"],
-   duties: ["Full stack web development",
-   "Maintain and monitor database",
-   "Update legacy systems",
-   "Maintian Labor Movement awareness",
-   "Create, test and deploy mobile apps",
-   "Assist clients with their user experience and technical understanding",
-   "Report to CTO and CEO on a regular basis"], 
-   qualifications: ["Proficient in React, React Native, Ruby on Rails, Redux, JQuery, CSS, HTML, Python",
-   "Willingness to learn new and expand upon known programming languages, librarys, and paradigms",
-   "Commitment to social and economic justice",
-   "Ability to perform within a dynamic and evolving workspace"])
+    tags: [
+        "React",
+        "react native",
+        "postgresql",
+        "rails",
+        "union",
+        "web developement",
+        "programmer",
+        "coding",
+        "social",
+        "economic",
+        "justice",
+        "solidarity"
+    ],
+   duties: [
+        "Full stack web development",
+        "Maintain and monitor database",
+        "Update legacy systems",
+        "Maintian Labor Movement awareness",
+        "Create, test and deploy mobile apps",
+        "Assist clients with their user experience and technical understanding",
+        "Report to CTO and CEO on a regular basis"
+    ], 
+   qualifications: [
+        "Proficient in React, React Native, Ruby on Rails, Redux, JQuery, CSS, HTML, Python",
+        "Willingness to learn new and expand upon known programming languages, librarys, and paradigms",
+        "Commitment to social and economic justice",
+        "Ability to perform within a dynamic and evolving workspace"
+    ])
 
 job2 = Job.create!(
     title: "Organizer", 
