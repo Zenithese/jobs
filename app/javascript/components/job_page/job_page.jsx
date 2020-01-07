@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions'
+import { openEmail } from '../../actions/email_actions'
 import { fetchJobs, fetchJob } from '../../actions/job_actions'
-import { saveJob } from '../../actions/saved_job_actions'
+// import { saveJob } from '../../actions/saved_job_actions'
 
 
 const mapStateToProps = (state, props) => {
@@ -17,23 +17,21 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchJobs: () => dispatch(fetchJobs()),
-        fetchJob: (job) => dispatch(fetchJob(job)),
-        saveJob: (job) => dispatch(saveJob(job)),
-        openModal: (modal) => dispatch(openModal(modal)),
+        // fetchJob: (job) => dispatch(fetchJob(job)),
+        // saveJob: (job) => dispatch(saveJob(job)),
+        openEmail: (recruiterEmail) => dispatch(openEmail(recruiterEmail)),
     };
 };
 
 class JobPage extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-
-        }
+        
     }
 
     componentDidMount() {
         this.props.fetchJobs();
-        this.props.fetchJob();
+        // this.props.fetchJob();
     }
 
     renderDuties() {
@@ -67,15 +65,10 @@ class JobPage extends React.Component {
     }
 
     render() {
+        
         if (this.props.job) {
             return (
                 <div className="container">
-                    {/* <h3>{this.props.job.title}</h3>
-                    <p>{this.props.job.description}</p>
-                    <div>{this.renderDuties()}</div>
-                    <div>{this.renderQualifications()}</div>
-                    <p>Local Union</p> */}
-
                     <div className="divider"></div>
                     <div className="section">
                         <h5>Description</h5>
@@ -84,19 +77,16 @@ class JobPage extends React.Component {
                     <div className="divider"></div>
                     <div className="section">
                         <h5>Duties</h5>
-                        {/* <blockquote>{this.renderDuties()}</blockquote> */}
                         {this.renderDuties()}
                     </div>
                     <div className="divider"></div>
                     <div className="section">
                         <h5>Qualifications</h5>
-                        {/* <blockquote>{this.renderQualifications()}</blockquote> */}
                         {this.renderQualifications()}
                     </div>
                     <div className="divider"></div>
                     <div className="section">
-                        <h5>Contact</h5>
-                        <a className="blue-text" style={{ cursor: 'pointer' }} onClick={() => this.props.openModal('contact')}>Contact</a>
+                        <h5 className="blue-text" style={{ cursor: 'pointer' }} onClick={() => this.props.openEmail(this.props.job.email)}>Contact</h5>
                     </div>
                 </div>
             )

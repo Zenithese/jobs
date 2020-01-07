@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     this.state = {
       username: "",
       password: "",
+      email: "",
       isVerified: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,9 +34,12 @@ class SessionForm extends React.Component {
     }
   }
 
-  update(field) {
+  update(field, secondField) {
     return e => {
       this.setState({ [field]: e.target.value })
+      if (secondField) {
+        this.setState({ [secondField]: e.target.value })
+      }
     }
   }
 
@@ -73,14 +77,29 @@ class SessionForm extends React.Component {
       )
     });
 
-    return (
-      <form className="session-form" onSubmit={this.handleSubmit}>
-        <a className="btn-floating waves-effect waves-light" onClick={this.handleClose}><i className="material-icons">close</i></a>
-        {errors}
+    let appropriateCredentials = this.props.formType === 'login' ? (
+      <div className="">
+        <label>Username or email:</label>
+        <input type="text" value={this.state.username} onChange={this.update('username', 'email')} />
+      </div>
+    ):(
+      <div>
         <div className="">
           <label>Username:</label>
           <input type="text" value={this.state.username} onChange={this.update('username')} />
         </div>
+        <div className="">
+          <label>Email:</label>
+          <input type="text" value={this.state.email} onChange={this.update('email')} />
+        </div>
+      </div>
+    )
+
+    return (
+      <form className="session-form" onSubmit={this.handleSubmit}>
+        <a className="btn-floating waves-effect waves-light" onClick={this.handleClose}><i className="material-icons">close</i></a>
+        {errors}
+        {appropriateCredentials}
         <div className="">
           <label>Password:</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />

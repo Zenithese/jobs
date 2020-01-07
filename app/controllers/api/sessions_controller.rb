@@ -7,6 +7,10 @@ class Api::SessionsController < ApplicationController
             params[:user][:username],
             params[:user][:password]
         )
+        @user ||= User.find_by_email(
+            params[:user][:email],
+            params[:user][:password]
+        )
 
         if @user
             login(@user)

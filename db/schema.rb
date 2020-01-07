@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_01_030321) do
+ActiveRecord::Schema.define(version: 2020_01_07_200810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_030321) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "city_id"
+    t.string "email", null: false
     t.index ["duties"], name: "index_jobs_on_duties", using: :gin
     t.index ["qualifications"], name: "index_jobs_on_qualifications", using: :gin
     t.index ["tags"], name: "index_jobs_on_tags", using: :gin
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_030321) do
     t.string "session_token", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
