@@ -9,6 +9,7 @@
 require 'open-uri'
 
 Job.destroy_all
+User.destroy_all
 
 # (1..10).each do |i|
 #   country = Country.create(name: Faker::Address.country)
@@ -20,8 +21,15 @@ Job.destroy_all
 #   end
 # end
 
+user1 = User.create!(
+    username: "Justin",
+    email: "jandersen770@gmail.com",
+    password: "solidarity"
+)
+
 job1 = Job.create!(
     title: "Developer", 
+    email: "personalpolitics0@gmail.com",
     description: "Design and code web applications with social and economic justice as core principles.",  
     tags: [
         "React",
@@ -54,7 +62,8 @@ job1 = Job.create!(
     ])
 
 job2 = Job.create!(
-    title: "Organizer", 
+    title: "Organizer",
+    email: "personalpolitics0@gmail.com",
     description: "We are seeking energetic and passionate individuals interested in starting social justice careers in labor organizing.
                     For 100 years, SEIU has been helping workers stand up for their rights, fighting for dignity, respect and better conditions in workplaces and communities. With a membership 2.1 million strong, SEIU is the fastest-growing union in the United States and our diverse leaders and staff support workers as they speak out for good jobs and better lives for themselves and their families.
                     The SEIU Organizer-in-Training (OIT) Program is a 12-month training program. As an Organizer-in-Training with the SEIU, you will be assigned to organizing campaigns, trained on the fundamentals of union organizing and will have the opportunity to learn the skills needed to help workers build power in the workplace. The OIT program trains labor organizers to assist and empower non-union workers to join unions and is different from other training programs that focus on developing political/electoral or community organizing skills.",  
@@ -90,7 +99,8 @@ job2 = Job.create!(
     ])
 
 job3 = Job.create!(
-    title: "Barista", 
+    title: "Barista",
+    email: "personalpolitics0@gmail.com",
     description: "Come work at Brewing Market Coffee & Tea and Espresso Vino by Brewing Market. We're a local Boulder County coffee and tea company in business for over 40 years! We're now hiring employees to help us keep growing in both our Lafayette and Longmont locations. If you're a passionate self-starter, Brewing Market and Espresso Vino by Brewing Market are an ideal place to get ahead. You'll be glad you applied to Brewing Market Coffee & Tea Company!",  
     tags: [
         "barista",

@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
 
         if @user.save
             login(@user)
+            UnionMailer.signup_email(@user).deliver_now
             render "api/users/show"
         else
             render json: @user.errors.full_messages, status: 422
@@ -15,7 +16,7 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password, :email)
     end
 
 end

@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :saved_jobs, only: [:index, :create, :destroy]
     resources :jobs, only: [:index, :show]
+    resource :emails, only: [:create]
   end
 end

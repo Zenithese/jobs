@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { sendEmail, closeEmail } from '../../actions/email_actions';
 import { connect } from 'react-redux';
 import { ReCaptcha } from 'react-recaptcha-google';
 
-function ContactModal({ modal, closeModal }) {
-    console.log(modal)
-    if (modal !== "contact") {
+function ContactModal({ email, unionEmail, closeEmail }) {
+    if (!unionEmail) {
         return null;
     }
 
@@ -16,6 +15,7 @@ function ContactModal({ modal, closeModal }) {
     }
 
     const [ verified, setVerified ] = useState(false);
+    const [ message, setMessage ] = useState('');
 
     useEffect(() => {
         if (captcha) {
@@ -42,34 +42,27 @@ function ContactModal({ modal, closeModal }) {
 
     const handleClose = (e) => {
         e.preventDefault();
-        closeModal();
+        closeEmail();
     }
 
     const handleSubmit = (e) => {
         if (verified) {
+            // sendEmail(message);
             e.preventDefault();
-            alert('Solidarity!');
+            // alert('Solidarity!');
         } else {
             alert('Silly bot, unions are for humans');
         }
     }
     
     return (
-        <div className="modal-background" onClick={closeModal}>
+        <div className="modal-background" onClick={closeEmail}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 <form className="session-form" onSubmit={handleSubmit}>
                     <a className="btn-floating waves-effect waves-light" onClick={(e) => handleClose(e)}><i className="material-icons">close</i></a>
-                    <div className="">
-                        <label>Name:</label>
-                        <input type="text"/>
-                    </div>
-                    <div className="">
-                        <label>Email:</label>
-                        <input type="text"/>
-                    </div>
-                    <div className="">
+                    <div>
                         <label>Message:</label>
-                        <textarea style={{ overflow: 'auto', resize: 'none', outline: 'none', borderRadius: '5px', backgroundColor: 'whitesmoke', height: '100px', border: '0px'}} placeholeder='write a message' type="text" defaultValue="" onChange={console.log('change')}/>
+                        <textarea style={{ overflow: 'auto', resize: 'none', outline: 'none', borderRadius: '5px', backgroundColor: 'whitesmoke', height: '100px', border: '0px'}} placeholeder='write a message' type="text" defaultValue="" onChange={e => setMessage(e.target.value)}/>
                     </div>
                     <ReCaptcha
                         ref={(el) => captchaLoaded(el)}
@@ -89,22 +82,24 @@ function ContactModal({ modal, closeModal }) {
                         onloadCallback={onLoadRecaptcha}
                         verifyCallback={verifyCallback}
                     />
-                    <input className="btn waves-effect waves-light" type="submit" value="send" />
+                    <input className="btn waves-effect waves-light" type="submit" value="send" onClick={sendEmail(message, email, unionEmail)}/>
                 </form>
             </div>
         </div>
     );
 }
 
-const msp = state => {
+const msp = (state) => {
     return {
-        modal: state.ui.modal,
+        unionEmail: state.ui.email,
+        email: state.entities.users[state.session.id].email
     };
 };
 
 const mdp = dispatch => {
     return {
-        closeModal: () => dispatch(closeModal()),
+        closeEmail: () => dispatch(closeEmail()),
+        sendEmail: (message, email, unionEmail) => dispatch(sendEmail(message, email, unionEmail)),
     };
 };
 
