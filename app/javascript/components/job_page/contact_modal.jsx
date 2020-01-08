@@ -47,9 +47,9 @@ function ContactModal({ email, unionEmail, closeEmail }) {
 
     const handleSubmit = (e) => {
         if (verified) {
-            // sendEmail(message);
             e.preventDefault();
-            // alert('Solidarity!');
+            closeEmail();
+            alert('Email sent')
         } else {
             alert('Silly bot, unions are for humans');
         }
@@ -90,9 +90,16 @@ function ContactModal({ email, unionEmail, closeEmail }) {
 }
 
 const msp = (state) => {
+    let email = state.entities.users[state.session.id] ? 
+    (
+        state.entities.users[state.session.id].email
+    ):(
+        null
+    )
+
     return {
         unionEmail: state.ui.email,
-        email: state.entities.users[state.session.id].email
+        email,
     };
 };
 

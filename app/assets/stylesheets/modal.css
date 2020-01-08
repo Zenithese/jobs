@@ -14,8 +14,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  width: 700px;
-  height: 400px;
+  min-width: 700px;
+  min-height: 400px;
   padding: 50px;
   display: flex;
   text-align: center;
