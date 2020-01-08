@@ -16,16 +16,28 @@ module Eventlite
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.action_mailer.perform_deliveries = true
+    # config.action_mailer.perform_deliveries = true
+    # config.action_mailer.delivery_method = :smtp
+    # config.action_mailer.smtp_settings = {
+    #   :user_name => "unionbasejob@gmail.com",
+    #   :password => "solidarity",
+    #   # :domain => "heroku.com",
+    #   :address => 'smtp.gmail.com',
+    #   :port => 587,
+    #   :authentication => :plain,
+    #   :enable_starttls_auto => true,
+    # }
+
     config.action_mailer.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
     config.action_mailer.smtp_settings = {
-      :user_name => "unionbasejob@gmail.com",
-      :password => "solidarity",
-      # :domain => "heroku.com",
-      :address => 'smtp.gmail.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      # :domain => 'yourdomain.com',
+      :address => 'smtp.sendgrid.net',
       :port => 587,
       :authentication => :plain,
-      :enable_starttls_auto => true,
+      :enable_starttls_auto => true
     }
   end
 end
