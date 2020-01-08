@@ -48,7 +48,7 @@ function ContactModal({ email, unionEmail, closeEmail }) {
         if (verified) {
             e.preventDefault();
             closeEmail();
-            alert('Email sent')
+            // alert('Email sent')
         } else {
             alert('Silly bot, unions are for humans');
         }
