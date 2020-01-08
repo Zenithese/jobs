@@ -19,8 +19,8 @@ module Eventlite
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :user_name => Rails.application.secrets.email_user_name,
-      :password => Rails.application.secrets.email_password,
+      :user_name => "unionbasejob@gmail.com",
+      :password => "solidarity",
       # :domain => "heroku.com",
       :address => 'smtp.gmail.com',
       :port => 587,
