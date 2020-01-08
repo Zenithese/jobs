@@ -71,11 +71,15 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    let errors = this.props.errors.map((err) => {
+    let errors = this.props.errors ? 
+    this.props.errors.map((err) => {
       return (
         <li className="session-errors" key={err}>{err}</li>
       )
-    });
+    }
+    ):(
+      null
+    )
 
     let appropriateCredentials = this.props.formType === 'login' ? (
       <div className="">
