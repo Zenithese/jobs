@@ -19,7 +19,6 @@ function ContactModal({ email, unionEmail, closeEmail }) {
 
     useEffect(() => {
         if (captcha) {
-            console.log("started, just a second...")
             captcha.reset();
             //invisible:
             // this.captcha.execute();

@@ -45,7 +45,6 @@ class SessionForm extends React.Component {
 
   componentDidMount() {
     if (this.captcha) {
-        console.log("started, just a second...")
         this.captcha.reset();
         //invisible:
         this.captcha.execute();
@@ -65,16 +64,14 @@ class SessionForm extends React.Component {
       this.setState({
         isVerified: true
       })
-      console.log(this.state.isVerified)
-      // console.log(recaptchaToken, "<= your recaptcha token")
     } 
   }
 
   render() {
     let errors = Array.isArray(this.props.errors) ? (
-    this.props.errors.map((err) => {
+    this.props.errors.map((err, i) => {
       return (
-        <li className="session-errors" key={err}>{err}</li>
+        <li className="session-errors" key={i}>{err}</li>
       )
     })
     ):(
