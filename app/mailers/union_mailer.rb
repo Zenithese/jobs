@@ -4,8 +4,9 @@ class UnionMailer < ApplicationMailer
     def signup_email(user) 
         @user = user
         # @url = 'unionjobs.herokuapp.com'
-        email_with_name = %("#{@user.username}" <#{@user.email}>)
+        # email_with_name = %("#{@user.username}" <#{@user.email}>)
+        email = @user.email
         @specialtext = 'Welcome ' + @user.username + ', thank you for signing up with UnionBase::Jobs. We certainly hope you find a fair, respectful and democratic workplace. Solidarity!'
-        mail(to: email_with_name, subject: 'Solidarity! Welcome to UnionBase::Jobs')
+        mail(to: email, subject: 'Solidarity! Welcome to UnionBase::Jobs')
     end
 end
