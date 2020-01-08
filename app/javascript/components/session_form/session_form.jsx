@@ -48,7 +48,7 @@ class SessionForm extends React.Component {
         console.log("started, just a second...")
         this.captcha.reset();
         //invisible:
-        // this.captcha.execute();
+        this.captcha.execute();
     }
   }
 
@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
       if (this.captcha) {
           this.captcha.reset();
           //invisible:
-          // this.captcha.execute();
+          this.captcha.execute();
       }
   }
 
@@ -73,7 +73,7 @@ class SessionForm extends React.Component {
   render() {
     let errors = this.props.errors.map((err) => {
       return (
-        <li className="session-errors" key={err.id}>{err}</li>
+        <li className="session-errors" key={err}>{err}</li>
       )
     });
 
@@ -110,13 +110,13 @@ class SessionForm extends React.Component {
           // onChange={this.onChange}
 
           //checkbox:
-          sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
-          size="normal"
-          data-theme="dark"
+          // sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
+          // size="normal"
+          // data-theme="dark"
 
           //invisible:
-          // sitekey="6Lepv8sUAAAAACVOwNxHDThDdBQhtnNsP6qMTPaw"
-          // size="invisible" 
+          sitekey="6Lepv8sUAAAAACVOwNxHDThDdBQhtnNsP6qMTPaw"
+          size="invisible" 
 
           render="explicit"
           onloadCallback={this.onLoadRecaptcha}

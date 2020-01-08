@@ -37,7 +37,7 @@ function Signs() {
 
     let strikeSigns = [];
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
         strikeSigns.push(
             <li className="col s1" key={`key-${i}`}>
                 <div style={{ position: 'relative' }}>
@@ -70,7 +70,7 @@ function Signs() {
 
     return (
         <footer>
-            {/* <p>Welcome to UnionBase::Jobs! A Rails/React/Redux job board. This site uses encryption and unique session tokens to keep users' credentials secure. When logged in, users can browse, read, and save potential jobs. Job postings would be handled by an internal team to ensure quality and legitemency. Thank you.</p> */}
+            {/* <p>Welcome to UnionBase::Jobs! A Rails/React/Redux job board. This site uses encryption and unique session tokens to keep users' credentials secure. When logged in, users can browse, read, and save potential jobs. Job postings would be handled by an internal team to ensure quality and legitimacy. Thank you.</p> */}
             <Article title={title}/>
             <div style={{ position: 'absolute', bottom: '0', width: '100%' }}>
                 <ul className="collective row">{strikeSigns}</ul>

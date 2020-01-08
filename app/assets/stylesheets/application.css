@@ -64,9 +64,22 @@ svg:hover + .portal > .entangle {
 }
 
 .collective {
+    position: fixed;
     height: 216px;
-    list-style: none;
     bottom: -60px;
-    position: absolute;
-    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+.blur {
+    position: fixed;
+    height: 80px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9));
+}
+
+.grecaptcha-badge { 
+    display: none !important;
 }

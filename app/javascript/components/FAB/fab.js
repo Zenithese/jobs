@@ -25,9 +25,6 @@ const FAB = ({ logout }) => {
                 <Link tooltip="Logout">
                         <i className="material-icons" style={{ cursor: "pointer" }} onClick={logout}>lock_outline</i>
                 </Link>
-                <Link tooltip="contact">
-                    <i className="material-icons" style={{ cursor: "pointer" }} onClick={logout}>message</i>
-                </Link>
                 <Link tooltip="Search">
                     <i className="material-icons" style={{ cursor: "pointer" }} onClick={() => searchRedirect()} >search</i>
                 </Link>
