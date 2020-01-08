@@ -71,12 +71,12 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    let errors = this.props.errors ? 
+    let errors = Array.isArray(this.props.errors) ? (
     this.props.errors.map((err) => {
       return (
         <li className="session-errors" key={err}>{err}</li>
       )
-    }
+    })
     ):(
       null
     )
