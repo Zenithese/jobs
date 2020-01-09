@@ -12,16 +12,27 @@ class SessionForm extends React.Component {
       password: "",
       email: "",
       isVerified: false,
+      demo: 0,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
     this.verifyCallback = this.verifyCallback.bind(this);
+    this.demo = this.demo.bind(this);
   }
 
   handleClose(e) {
     e.preventDefault();
     this.props.closeModal();
+  }
+
+  demo() {
+    this.setState({ demo: this.state.demo += 1 })
+    if (this.state.demo === 2) {
+      this.setState({ username: "Demo", password: "password", email: "Demo" })
+    } else if (this.state.demo === 4) {
+      this.setState({ username: "", password: "", email: "", demo: 0 })
+    }
   }
 
   handleSubmit(e) {
@@ -78,6 +89,17 @@ class SessionForm extends React.Component {
       null
     )
 
+    let demoSwitch = this.props.formType === 'login' ? (
+      <div>
+        <label>Demo</label>
+        <div className="switch" onClick={this.demo}>
+          <label>Off<input type="checkbox"/><span className="lever"></span>On</label>
+        </div>
+      </div>
+    ):(
+      null
+    )
+
     let appropriateCredentials = this.props.formType === 'login' ? (
       <div className="">
         <label>Username or email:</label>
@@ -97,38 +119,42 @@ class SessionForm extends React.Component {
     )
 
     return (
-      <form className="session-form" onSubmit={this.handleSubmit}>
-        <a className="btn-floating waves-effect waves-light" onClick={this.handleClose}><i className="material-icons">close</i></a>
-        {errors}
-        {appropriateCredentials}
-        <div className="">
-          <label>Password:</label>
-          <input type="password" value={this.state.password} onChange={this.update('password')} />
-        </div>
-        <ReCaptcha
-          ref={(el) => {this.captcha = el;}}
-          // action='homepage'
-          // onChange={this.onChange}
+      <div>
+        {demoSwitch}
+        <br />
+        <form className="session-form" onSubmit={this.handleSubmit}>
+          <a className="btn-floating waves-effect waves-light" onClick={this.handleClose}><i className="material-icons">close</i></a>
+          {errors}
+          {appropriateCredentials}
+          <div className="">
+            <label>Password:</label>
+            <input type="password" value={this.state.password} onChange={this.update('password')} />
+          </div>
+          <ReCaptcha
+            ref={(el) => {this.captcha = el;}}
+            // action='homepage'
+            // onChange={this.onChange}
 
-          //checkbox:
-          // sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
-          // size="normal"
-          // data-theme="dark"
+            //checkbox:
+            // sitekey="6LdTScoUAAAAAN1mJ9m9qz9JAhUe8ysMldK4IwqX"
+            // size="normal"
+            // data-theme="dark"
 
-          //invisible:
-          sitekey="6Lepv8sUAAAAACVOwNxHDThDdBQhtnNsP6qMTPaw"
-          size="invisible" 
+            //invisible:
+            sitekey="6Lepv8sUAAAAACVOwNxHDThDdBQhtnNsP6qMTPaw"
+            size="invisible" 
 
-          render="explicit"
-          onloadCallback={this.onLoadRecaptcha}
-          verifyCallback={this.verifyCallback}
-        />
-        <input className="btn waves-effect waves-light" type="submit" value={this.props.formType} />
-        <br/>
-        <a>or</a>
-        <br/>
-        {this.props.otherForm}
-      </form>
+            render="explicit"
+            onloadCallback={this.onLoadRecaptcha}
+            verifyCallback={this.verifyCallback}
+          />
+          <input className="btn waves-effect waves-light" type="submit" value={this.props.formType} />
+          <br/>
+          <a>or</a>
+          <br/>
+          {this.props.otherForm}
+        </form>
+      </div>
     )
   }
 
